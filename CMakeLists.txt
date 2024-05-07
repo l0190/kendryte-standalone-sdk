@@ -2,7 +2,8 @@
 
 # set this will supress some warnings
 set(BUILDING_SDK "yes" CACHE INTERNAL "")
-
+#Set the folder name in src
+set(PROJ hello_world)
 # basic config
 if (NOT PROJ)
     get_filename_component(PROJ ${CMAKE_CURRENT_BINARY_DIR} DIRECTORY)
@@ -15,7 +16,10 @@ endif ()
 cmake_minimum_required(VERSION 3.0)
 include(./cmake/common.cmake)
 project(${PROJ} C CXX ASM)
-
+#Set path of toolchain
+set(TOOLCHAIN D:/tools/code/c/kendryte-toolchain/bin)
+#Generate compile_commands.json
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 # config self use headers
 include(./cmake/macros.internal.cmake)
 header_directories(${SDK_ROOT}/lib)
